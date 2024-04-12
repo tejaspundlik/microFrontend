@@ -15,6 +15,8 @@
     width: 75vw;
     background-color: aliceblue;
     overflow: hidden;
+    position: relative;
+    /* Added position relative */
 }
 
 .train-image {
@@ -39,4 +41,14 @@
 .train-capacity {
     margin-bottom: 4px;
     color: #666;
+}
+
+.view-details-button {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    /* Adjust the right spacing */
+    transform: translateY(-50%);
+    /* Center vertically */
+    background-color: aqua;
 }

@@ -5,8 +5,6 @@ import { useLocation } from 'react-router-dom';
 import './Train.css';
 
 const TrainPage = () => {
-
-
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const date = queryParams.get('date');
@@ -41,8 +39,9 @@ const TrainPage = () => {
     }, [date, trainPathName]);
 
     const handleTrainButtonClick = (trainId) => {
-        console.log(trainId)
+        window.location.href = `/reserve?date=${date}&trainPathName=${trainPathName}&trainId=${trainId}`;
     };
+
     return (
         <div className="train-page">
             <h1>Choose Your Train</h1>
@@ -54,8 +53,8 @@ const TrainPage = () => {
                         <p className="train-type">Train Type: {train.trainType}</p>
                         <p className="train-fare">Fare: ${train.trainFare}</p>
                         <p className="train-capacity">Capacity: {train.trainCapacity}</p>
-                        <button onClick={() => handleTrainButtonClick(train.trainId)}>View Details</button>
                     </div>
+                    <button className="view-details-button" onClick={() => handleTrainButtonClick(train.trainId)}>Book Now</button>
                 </div>
             ))}
         </div>
