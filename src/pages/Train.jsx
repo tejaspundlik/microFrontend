@@ -9,7 +9,7 @@ const TrainPage = () => {
     const queryParams = new URLSearchParams(location.search);
     const date = queryParams.get('date');
     const trainPathName = queryParams.get('trainPathName');
-
+    const [timetableId, setTimetableId] = useState([]);
     const [trainData, setTrainData] = useState([]);
 
     useEffect(() => {
@@ -22,6 +22,7 @@ const TrainPage = () => {
                         filterPathName: trainPathName
                     }
                 );
+                setTimetableId(response.data[0].id)
                 const trains = response.data.map(record => record.trainId);
                 const trainDataPromises = trains.map((trainId) =>
                     axios.get(`http://localhost:8081/api/train/${trainId}`)
@@ -29,7 +30,7 @@ const TrainPage = () => {
 
                 const trainDataResponses = await Promise.all(trainDataPromises);
                 const trainDataArray = trainDataResponses.map((response) => response.data);
-                console.log(trainDataArray)
+                // console.log(trainDataArray)
                 setTrainData(trainDataArray);
             } catch (error) {
                 console.error('Error fetching train data:', error);
@@ -39,7 +40,7 @@ const TrainPage = () => {
     }, [date, trainPathName]);
 
     const handleTrainButtonClick = (trainId) => {
-        window.location.href = `/reserve?date=${date}&trainPathName=${trainPathName}&trainId=${trainId}`;
+        window.location.href = `/reserve?date=${date}&trainPathName=${trainPathName}&trainId=${trainId}&timetableId=${timetableId}`;
     };
 
     return (
