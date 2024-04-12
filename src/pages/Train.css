@@ -1,0 +1,42 @@
+.train-page {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.train-card {
+    display: flex;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 75vw;
+    background-color: aliceblue;
+    overflow: hidden;
+}
+
+.train-image {
+    flex: 1;
+    max-width: 25vw;
+}
+
+.train-content {
+    flex: 1;
+    padding: 16px;
+}
+
+.train-name {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.train-type,
+.train-fare,
+.train-capacity {
+    margin-bottom: 4px;
+    color: #666;
+}
